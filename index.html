@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRIMA QOE — Artisanal Sambal Kecombrang & Gourmet Delicacies</title>
+
+  <!-- Google Fonts: Inter, Playfair Display, Roboto & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN & Konfigurasi Tema Custom -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwind-config.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-gold-400 selection:text-obsidian-950">
+
+  <!-- 1. Floating Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- 2. Log Out Confirmation Modal -->
+  <div id="logout-modal" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div class="w-full max-w-lg rounded-3xl bg-[#181818] border border-gold-400/30 p-7 sm:p-8 shadow-2xl view-fade">
+      <div class="flex items-start gap-4 mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-[#252218] border border-gold-400/20 flex items-center justify-center text-gold-400 shrink-0">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-[11px] font-bold tracking-[0.14em] uppercase text-gold-400 mb-1">AUTHENTICATION AUDIT</p>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Log Out of Admin Workspace?</h2>
+        </div>
+      </div>
+
+      <p class="text-sm text-neutral-300 leading-relaxed mb-6">
+        Are you sure you want to log out of your Prima_Qoe kitchen management sessions? Any unsaved SKU changes or incomplete dispatch tallies will be safely discarded.
+      </p>
+
+      <div class="rounded-2xl bg-[#121212] border border-white/10 p-4 mb-7 space-y-2.5">
+        <div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-neutral-400">
+          <span class="w-4 h-4 rounded-full border border-gold-400/60 text-gold-400 inline-flex items-center justify-center text-[10px]">i</span>
+          DESTINATION GUIDANCE
+        </div>
+        <div class="flex items-center gap-2.5 text-xs text-neutral-300 pl-1">
+          <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+          <span>Clicking <strong class="text-white">Confirm</strong> redirects to : <span class="text-gold-400 font-medium">Admin Login Screen</span></span>
+        </div>
+        <div class="flex items-center gap-2.5 text-xs text-neutral-300 pl-1">
+          <span class="w-2 h-2 rounded-full bg-neutral-500"></span>
+          <span>Clicking <strong class="text-white">Cancel</strong> returns to : <span class="text-white font-medium">Active Dashboard</span></span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <button type="button" onclick="closeLogoutModal()" class="w-full py-3.5 px-5 rounded-2xl bg-[#121212] hover:bg-[#222222] border border-white/10 text-sm font-semibold text-white transition cursor-pointer">
+          Cancel / Remain in Dashboard
+        </button>
+        <button type="button" onclick="confirmLogout()" class="w-full py-3.5 px-5 rounded-2xl bg-gold-400 hover:bg-gold-300 text-obsidian-950 text-sm font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-gold-400/15 cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/>
+          </svg>
+          <span>Log Out &amp; End Sessions</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Root Container Tempat Semua Halaman Dirender -->
+  <div id="app" class="flex-1 flex flex-col"></div>
+
+  <!-- 4. JavaScript Modules (Urutan Pemuatan Wajib Berurutan) -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/views-public.js"></script>
+  <script src="assets/js/views-admin.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
